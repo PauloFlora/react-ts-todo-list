@@ -13,6 +13,8 @@ export default function ToDoList() {
   function handleSubmit(event: React.SyntheticEvent): void {
     event.preventDefault();
     setTasks([...tasks, taskInput]);
+    setTaskInputt('');
+    setIsDisabled(true);
   }
 
   function handleChange(event: React.SyntheticEvent): void {
