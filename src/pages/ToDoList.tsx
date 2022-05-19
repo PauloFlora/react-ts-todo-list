@@ -16,10 +16,22 @@ export default function ToDoList() {
     const resposne: Response = await fetch('http://localhost:3001/tasks');
     const newTasks = await resposne.json();
     setTasks(newTasks);
-  }, []);  
+  }, []);
+
+  async function deleteTask(event: React.SyntheticEvent) {
+    const { target } = event;
+    const { id } = (target as HTMLInputElement);
+    const requestOptions = {
+      method: 'DELETE',
+    };
+    await fetch(`http://localhost:3001/tasks/${id}`, requestOptions);
+    await getTasks();
+  }
 
   // Sorting functions
   function sortAToZ() {
+    console.log('a to z');
+    
     const sortedTasks = tasks.sort((a: ITask, b:ITask) => {
       if(a.task < b.task) return -1;
       if(b.task < a.task) return 1;
@@ -29,6 +41,7 @@ export default function ToDoList() {
   }
 
   function sortByDate() {
+    console.log('date');
     const sortedTasks = tasks.sort((a: ITask, b:ITask) => {
       if(a.id < b.id) return -1;
       if(b.id < a.id) return 1;
@@ -102,7 +115,10 @@ export default function ToDoList() {
               <li key={ task.id  }>
                 <p> { task.task } </p>
                 <button> { task.status } </button>
-                <button> X </button>
+                <button
+                  id={ `${task.id}` }
+                  onClick={ deleteTask }
+                > X </button>
               </li>
             );
           }) : 'Carregando...' }
