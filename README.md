@@ -8,5 +8,8 @@ Para testar a aplicação, siga os passos a seguir:
  1. Clone o repositório utilizando comando abaixo:
     - git clone git@github.com:PauloFlora/react-ts-todo-list.git
     - cd react-ts-todo-list/ 
- 2. instale as dependências com o comando "npm install"
- 3. rode o comando "npm start"
+ 2. Crie um arquivo .env e configure a seguinte variavel com o endereço da aplicação backend:
+    - REACT_APP_BACKEND_ADDRESS
+    - OBS: a aplicação backend pode ser encontrada neste link: https://github.com/PauloFlora/todo-list-backend
+ 4. instale as dependências com o comando "npm install"
+ 5. rode o comando "npm start"
